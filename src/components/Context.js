@@ -1,4 +1,4 @@
-import React, { createContext, useState } from 'react';
+import React, { createContext, useEffect, useState } from 'react';
 
 export const Context = createContext({});
 
@@ -8,6 +8,7 @@ export const Provider = (props) => {
   const [deletedToDo, setDeletedToDo] = useState({});
   const [editToDo, setEditToDo] = useState({});
   const [editMode, setEditMode] = useState(false);
+  const [filteredArray, setFilteredArray] = useState([]);
 
   const AddToDo = (inputValue, date, id) => {
     let sameName = todoList.find((el) => el.name === inputValue);
@@ -47,7 +48,6 @@ export const Provider = (props) => {
     }
     document.getElementById('input').value = '';
   };
-
   const deleteToDo = (id) => {
     let deletedElement = todoList.find((el) => el.id === id);
     setDeletedToDo(deletedElement);
@@ -60,7 +60,8 @@ export const Provider = (props) => {
     let elementToBeEdited = todoList.find((el) => el.id === id);
     setEditToDo(elementToBeEdited);
     document.getElementById('input').value = elementToBeEdited.name;
-    document.getElementById(id).style.textDecoration = 'line-through';
+    document.getElementById(id).style.animation =
+      'EditAnimation 1.5s linear infinite';
     setEditMode(true);
   };
   const FinishToDo = (id) => {
@@ -69,7 +70,7 @@ export const Provider = (props) => {
     let temporaryArr = [...todoList];
     temporaryArr.splice(id, 1, finishedToDo);
     setTodoList(temporaryArr);
-    document.getElementById(id).style.textDecoration = 'line-through';
+    document.getElementById(id).classList.add('line');
     let btns =
       document.getElementById(id).nextElementSibling.nextElementSibling
         .nextElementSibling.childNodes;
@@ -165,6 +166,15 @@ export const Provider = (props) => {
     );
     setTodoList(arrayToBeSorted);
   };
+  const FilterByStatus = (statusProp) => {
+    setFilteredArray([]);
+    let temporaryArr = [...todoList].filter((el) => el.status === statusProp);
+    setFilteredArray(temporaryArr);
+  };
+  const SetCheckBox = (elementId) => {
+    document.getElementById(elementId).checked = false;
+  };
+
   return (
     <Context.Provider
       value={{
@@ -183,7 +193,11 @@ export const Provider = (props) => {
         SortByDateAscending,
         SortByDateDescending,
         SortByStatusAscending,
-        SortByStatusDescending
+        SortByStatusDescending,
+        FilterByStatus,
+        filteredArray,
+        setFilteredArray,
+        SetCheckBox
       }}
     >
       {props.children}
