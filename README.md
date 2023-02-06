@@ -5,8 +5,11 @@ This is a simple desktop only todo application built using React.
 --Features--
 
 Add todo items
+
 Mark todo items as complete
+
 View a calendar with todo items for each day
+
 Styled with Styled Components
 
 --Built With--
