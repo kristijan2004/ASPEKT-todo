@@ -18,19 +18,19 @@ export const Provider = (props) => {
       id: 1
     },
     {
-      name: 'treto',
+      name: 'Take the kids to the dentist',
       status: 'active',
       date: '2023-02-15',
       id: 2
     },
     {
-      name: 'cetvrto',
-      status: 'active',
-      date: '2023-02-20',
+      name: 'Create awesome todo app using React',
+      status: 'completed',
+      date: '2023-02-06',
       id: 3
     },
     {
-      name: 'petto',
+      name: 'Buy gift for Valentines day',
       status: 'completed',
       date: '2023-02-15',
       id: 4

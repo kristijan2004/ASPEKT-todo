@@ -25,6 +25,8 @@ Responsivness
 
 TypeScript
 
+Link the app with an API
+
 --Contributing--
 
 Contributions are welcome! Please feel free to submit a pull request.
