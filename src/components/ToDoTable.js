@@ -48,7 +48,6 @@ const Tbody = styled.tbody`
       color: green;
     }
     td {
-      padding: 8px 20px;
       text-transform: capitalize;
       &:nth-child(2) {
         min-width: 200px;

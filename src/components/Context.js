@@ -6,13 +6,13 @@ export const Provider = (props) => {
   const [inputValue, setInputValue] = useState('');
   const [todoList, setTodoList] = useState([
     {
-      name: 'prvo',
+      name: 'Buy Milk',
       status: 'active',
       date: '2023-02-05',
       id: 0
     },
     {
-      name: 'vtoro',
+      name: 'Take the car to the mechanic',
       status: 'active',
       date: '2023-02-10',
       id: 1
@@ -65,6 +65,8 @@ export const Provider = (props) => {
       alert('Todo is already listed!');
     } else if (inputValue === '') {
       alert('Please enter a valid name!');
+    } else if (inputValue.length > 28) {
+      alert('Todo name cannot be longer than 28 letters');
     } else {
       if (editMode) {
         let toDo = {
@@ -95,8 +97,6 @@ export const Provider = (props) => {
   };
   // Function to delete a ToDo from the list based on its id
   const deleteToDo = (id) => {
-    // Find the ToDo element with the given id
-    let deletedElement = todoList.find((el) => el.id === id);
     // Copy the original ToDo list into a new array
     let Array = [...todoList];
     // Remove the element from the new array using the id
